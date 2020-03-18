@@ -1,0 +1,171 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title Document
+  link(rel='stylesheet', href='/css/style.css')
+  script(src='/img/icon/fontawesome.min.js')
+  style.
+    body {
+    background-color: rgb(241, 241, 241);
+    }
+    .account {
+    background-color: white;
+    position: relative;
+    margin: 7em auto;
+    width: 500px;
+    height: 250px;
+    border-radius: 10px;
+    }
+    .account > .avatar {
+    position: relative;
+    top: 10px;
+    width: 100px;
+    height: 100px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 100%;
+    margin: 20px auto;
+    }
+    p {
+    text-align: center;
+    margin-bottom: 10px;
+    }
+    .center{
+      display:flex;
+      justify-content: center;
+    }
+    .account-setting {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 50px;
+    height: 25px;
+    text-align: end;
+    }
+    .nav {
+    position: absolute;
+    top: 35px;
+    right: 10px;
+    width: auto;
+    height: 70px;
+    display: none;
+    border: 1px solid gray;
+    background-color: white;
+    }
+    .account-setting:hover ~ .nav {
+    display: block;
+    }
+    .nav:hover {
+    display: block;
+    }
+    .account-setting > i {
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    }
+    .account-setting > i:hover {
+    color: rgb(0, 0, 0);
+    }
+    .fas {
+    line-height: 25px;
+    }
+    li {
+    padding: 5px;
+    }
+    li:hover {
+    background-color: gray;
+    }
+    .nav > li,
+    label {
+    cursor: pointer;
+    }
+    .nav > label {
+    min-width: 211px;
+    height: 100%;
+    }
+    ul {
+    list-style: none;
+    margin-top: 5px;
+    }
+    .nav,
+    ul {
+    border-radius: 10px;
+    }
+    .bgr_overlay1 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: none;
+    animation: fadein linear 0.1s;
+    }
+    .check-edit:checked ~ .bgr_overlay {
+    display: block;
+    }
+    .check-change:checked ~ .bgr_overlay1 {
+    display: block;
+    }
+    .selected-edit-account,
+    .selected-change-account {
+    width: 500px;
+    height: 500px;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+    }
+    .check-edit:checked ~ .selected-edit-account {
+    display: block;
+    }
+    .check-change:checked ~ .selected-change-account {
+    display: block;
+    }
+section.bar
+  img.logo(src='/img/menu.png', alt='logo')
+  img.REBO(src='/img/REBO.png', alt='REBO')
+  .bar-user
+    .bar-user_icon
+      i.fas.fa-search
+      i.fas.fa-bell
+    .vertical_line
+    .bar-user_info
+      .bar-user_info--name
+        p Tr&#x1EA7;n Anh Qu&acirc;n
+        p student
+      .bar-user_info--avatar
+section.account
+  .avatar
+  div
+    p(style='font-size: 1.5em;font-weight: bolder;') Tr&#x1EA7;n Anh Qu&acirc;n
+    p(style='color: gray;') Student
+    .center
+      p VKU,
+      p Đà Nẵng         
+  .account-setting
+    i.fas.fa-cog
+    i.fas.fa-caret-down
+  .nav
+    ul
+      label(for='edit')
+        li(style='border-bottom: 1px solid gray;')
+          | Ch&#x1EC9;nh s&#x1EED;a th&ocirc;ng tin c&aacute; nh&acirc;n
+      label(for='change')
+        li
+          | &Dstrok;&#x1ED5;i m&#x1EAD;t kh&#x1EA9;u
+input#edit.check-edit(type='checkbox', name='', hidden='')
+label.bgr_overlay(for='edit')
+section.selected-edit-account
+  label(for='edit')
+    img.close(src='/img/Close.svg', alt='')
+  |       Edit
+input#change.check-change(type='checkbox', name='', hidden='')
+label.bgr_overlay1(for='change')
+section.selected-change-account
+  label(for='change')
+    img.close(src='/img/Close.svg', alt='')
+  |       Pass

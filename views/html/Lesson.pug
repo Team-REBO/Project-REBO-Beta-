@@ -1,0 +1,65 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title REBO
+  link(rel='stylesheet', href='/css/style.css')
+  script(src='/img/icon/fontawesome.min.js')
+  style.
+      .fa-book {
+      color: #38d39f;
+      }
+      .lesson-main {
+      width: 100%;
+      height: auto;
+      }
+      .main {
+        width: 100%;
+        display: flex;
+      }
+section.bar
+  img.logo(src='/img/menu.png', alt='logo')
+  img.REBO(src='/img/REBO.png', alt='REBO')
+  .bar-user
+    .bar-user_icon
+      i.fas.fa-search
+      i.fas.fa-bell
+    .vertical_line
+    .bar-user_info
+      .bar-user_info--name
+        p=item.fullname
+        p student
+      a.bar-user_info--avatar(href="/Account" style="cursor: pointer;")
+.main
+  section.menu_bar
+    header.menu
+      nav.menu_items
+        .backgr_icon
+          a.item(href='/Overview')
+            i.fas.fa-chart-pie
+        .backgr_icon
+          a.item(href='/Classroom')
+            i.fas.fa-users  
+        .backgr_icon
+          a.item(href='/Lesson')
+            i.fas.fa-book
+        .backgr_icon
+          a.item(href='/Tools')
+            i.fas.fa-tools
+        .backgr_icon
+          a.item(href='/Gift')
+            i.fas.fa-gift
+        .horizontal_line
+        .backgr_icon
+          a.item(href='/Settings')
+            i.fas.fa-cog
+        .backgr_icon
+          a.item(href='/Contact')
+            i.fas.fa-phone-square
+        .backgr_icon
+          a.item(href='/Comment')
+            i.fas.fa-medal
+        .backgr_icon
+          a.item(href='/Logout')
+            i.fas.fa-sign-out-alt
+  section.lesson-main

@@ -1,0 +1,21 @@
+h1 Search
+a(href="/user/create") New
+form(action="search" method="GET")
+    input(type="text" name="q")
+    button Searc
+ul
+    each user in list
+        li=user.name
+table
+    thead
+        th name
+        th pass
+        th email
+        th sdt
+    tbody
+        each user in list
+            tr 
+                td=user.name
+                td=user.pass
+                td=user.email
+                td=user.sdt

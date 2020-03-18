@@ -1,0 +1,94 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title REBO
+  link(rel='stylesheet', href='/css/style.css')
+  script(src='/img/icon/fontawesome.min.js')
+  style.
+    .fa-users {
+    color: #38d39f;
+    }
+    .classroom-main {
+      width: 100%;
+      height: auto;
+      }
+    .main {
+      width: 100%;
+      display: flex;
+    }
+section.bar
+  img.logo(src='/img/menu.png', alt='logo')
+  img.REBO(src='/img/REBO.png', alt='REBO')
+  .bar-user
+    .bar-user_icon
+      i.fas.fa-search
+      i.fas.fa-bell
+    .vertical_line
+    .bar-user_info
+      .bar-user_info--name
+        p=item.fullname
+        p student
+      a.bar-user_info--avatar(href="/Account" style="cursor: pointer;")
+.main
+  section.menu_bar
+    header.menu
+      nav.menu_items
+        .backgr_icon
+          a.item(href='/Overview')
+            i.fas.fa-chart-pie
+            .item-title
+              p Tổng quan
+        .backgr_icon
+          a.item(href='/Classroom')
+            i.fas.fa-users
+            .item-title
+              p Lớp học 
+        .backgr_icon
+          a.item(href='/Lesson')
+            i.fas.fa-book
+            .item-title
+              p Bài tập
+        .backgr_icon
+          a.item(href='/Tools')
+            i.fas.fa-tools
+            .item-title
+              p Công cụ
+        .backgr_icon
+          a.item(href='/Gift')
+            i.fas.fa-gift
+            .item-title
+              p Quà tặng
+        .horizontal_line
+        .backgr_icon
+          a.item(href='/Settings')
+            i.fas.fa-cog
+            .item-title
+              p Cài đặt
+        .backgr_icon
+          a.item(href='/Contact')
+            i.fas.fa-phone-square
+            .item-title
+              p Liên hệ
+        .backgr_icon
+          a.item(href='/Comment')
+            i.fas.fa-medal
+            .item-title
+              p Đánh giá
+        .backgr_icon
+          a.item(href='/Logout')
+            i.fas.fa-sign-out-alt
+            .item-title
+              p Đăng xuất
+  section.classroom-main
+//
+  <script>
+  function myFunction() {
+  var x = document.getElementById("form_signup");
+  if (x.style.display === "none") {
+  x.style.display = "block";
+  } else {
+  x.style.display = "none";
+  }
+  }
+  </script>

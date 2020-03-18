@@ -1,0 +1,179 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title REBO
+link(href='https://fonts.googleapis.com/css?family=Open+Sans&display=swap', rel='stylesheet')
+link(rel='stylesheet', href='/swiper/swiper.min.css')
+link(rel='stylesheet', href='/css/style.css')
+script(src='/swiper/swiper.min.js')
+style.
+  .slide-shows {
+  position: absolute;
+  left: 50%;
+  overflow: hidden;
+  }
+  .nav {
+  position: relative;
+  top: 0;
+  /* position: fixed; */
+  text-align: end;
+  width: 100%;
+  height: 100px;
+  }
+  .link {
+  line-height: 3;
+  margin: 10px;
+  }
+  a {
+  font-size: 1em;
+  color: rgb(0, 0, 0);
+  font-weight: bolder;
+  }
+  .box {
+  width: 100%;
+  }
+  .backgr-intro {
+  height: 800px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  }
+  .img {
+  margin: auto 0 auto 25%;
+  width: 50%;
+  height: 300px;
+  background-color: black;
+  }
+  .text {
+  position: absolute;
+  width: 40%;
+  height: auto;
+  text-align: center;
+  margin-left: 50px;
+  }
+  .backgr {
+  background: url(/img/bg_homepage.jpg) no-repeat top/100% auto;
+  width: 100%;
+  min-height: 600px;
+  }
+  .text-feature {
+  width: 80%;
+  justify-content: center;
+  margin: auto 0;
+  }
+  .classroom .img {
+  order: 2;
+  }
+  .classroom .text-feature {
+  margin-left: 100px;
+  order: 1;
+  }
+  .btn {
+  margin: 50px auto;
+  width: 60%;
+  }
+  .swiper-container {
+    height: auto;
+    width: 600px;
+  }
+  .swiper-wrapper {
+    align-items: flex-end;
+  }
+  .swiper-slide img {
+    width: inherit;
+    max-width: 100%;
+    height: auto;
+  }
+  .text > h1{
+    font-size:5em;
+    animation:text-pop-up-top .5s cubic-bezier(.25,.46,.45,.94) both !important
+  }
+.backgr
+  section.nav
+    nav.links
+      a.link(href='') Home
+      a.link(href='') About
+      a.link(href='') Contact
+  .text
+    h1 REBO
+    q
+      | REBO l&agrave; trang web d&agrave;nh cho c&aacute;c &dstrok;&#x1ED1;i t&#x1B0;&#x1EE3;ng gi&aacute;o vi&ecirc;n v&agrave; h&#x1ECD;c sinh theo xu
+      | h&#x1B0;&#x1EDB;ng 4.0
+    p
+      | H&igrave;nh th&#x1EE9;c h&#x1ECD;c t&#x1EAD;p n&agrave;y nh&#x1EB1;m n&acirc;ng cao tr&iacute; tu&#x1EC7; v&agrave; gi&uacute;p h&#x1ECD;c sinh hi&#x1EC3;u r&otilde;
+      | t&#x1EEB;ng chi ti&#x1EBF;t m&ocirc;n h&#x1ECD;c
+    form(action='/login', method='GET')
+      input.btn(type='submit', value='Get Start')
+  // Swiper
+  .slide-shows
+    .swiper-container
+      .swiper-wrapper
+        .swiper-slide
+          img(src='/img/s1.jpg', alt='')
+        .swiper-slide
+          img(src='/img/s2.jpg', alt='')
+        .swiper-slide
+          img(src='/img/s3.jpg', alt='')
+        .swiper-slide
+          img(src='/img/s4.jpg', alt='')
+        .swiper-slide
+          img(src='/img/s5.jpg', alt='')
+      // Add Arrows
+      .swiper-button-next
+      .swiper-button-prev
+      // Add Pagination
+      .swiper-pagination
+
+section.box.backgr-intro.overview
+  .img
+    img(src='', alt='')
+  .text-feature
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - -
+section.box.backgr-intro.classroom
+  .img
+    img(src='', alt='')
+  .text-feature
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - -
+section.box.backgr-intro.lesson
+  .img
+    img(src='', alt='')
+  .text-feature
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    | - - - - - - - - - - - - - - - - -
+script.
+  var swiper = new Swiper(".swiper-container", {
+    slidesPerView:'auto',
+    cssMode: true,
+    navigation: {
+    nextEl: ".swiper-button-next",
+    prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+    el: ".swiper-pagination",
+    },
+    mousewheel: true,
+    keyboard: true,
+    autoplay: {
+    delay: 3000,
+    },
+    });

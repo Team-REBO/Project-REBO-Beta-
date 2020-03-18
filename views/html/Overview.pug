@@ -1,0 +1,243 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title REBO
+  link(rel='stylesheet', href='/css/style.css')
+  script(src='/img/icon/fontawesome.min.js')
+  script(src='/ChartJs/Chart.min.js')
+  style.
+      .fa-chart-pie {
+      color: #38d39f;
+      }
+      .overview-main {
+      width: 100%;
+      height: auto;
+      }
+      .main {
+        width: 100%;
+        display: flex;
+      }
+      .overview-card {
+        width: 100%;
+        height: 200px;
+      }
+      .cards {
+        display: flex;
+        justify-content: center;
+      }
+      .cards div {
+      margin: 25px 20px;
+      width: 250px;
+      height: 130px;
+      border: 1px solid rgb(184, 184, 184);
+      border-radius: 20px;
+      box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      line-height: 50px;
+      }
+      .card{
+        font-size:1.2em;
+        color:gray;
+      }
+      .card p{
+        font-size:2em;
+        color:black;
+      }
+      ul {
+        list-style: none;
+      }
+      .additional_info {
+        width: 300px;
+        height: inherit;
+        border-left: 1px solid rgb(184, 184, 184);
+      }
+      .chart {
+        display: flex;
+        margin: 0 auto;
+        width: 1137px;
+        height: 450px;
+        box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+        border: 0.5px solid rgb(177, 177, 177);
+      }
+      .box {
+        width: inherit;
+        height: 90px;
+        border-bottom: 0.5px solid rgb(189, 189, 189);
+        text-align: center;
+        line-height: 30px;
+      }
+      .box p {
+        color: #9fa2b4;
+        font-size: 2em;
+      }
+      .tickets-tasks {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+      }
+      .tickets {
+        width: 500px;
+        height: 400px;
+        margin-right: 65px;
+      }
+      .tasks {
+        width: 500px;
+        height: 400px;
+        background-color: blue;
+        margin-left: 75px;
+      }
+      .tickets,
+      .tasks {
+        border: 1px solid #9fa2b4;
+        border-radius: 10px;
+      }
+      .container {
+        margin: 0;
+        width: 900px;
+        height: inherit;
+      }
+      #myChart {
+      }
+      .tickets-title {
+      font-size: 1.5em;
+      line-height: 60px;
+      height: 15%;
+      margin-left: 0.5em;
+      }
+      .tickets-list {
+        height: 85%;
+        width: inherit;
+      }
+      .list-box {
+        width: 100%;
+        height: 67.6px;
+        display: flex;
+        line-height: 67.6px;
+        font-size: 1.2em;
+      }
+      .list-box .avt {
+        margin-left: 0.5em;
+        background-color: rgb(119, 191, 255);
+        width: 67.6px;
+        height: inherit;
+      }
+      .list-box p {
+        margin-left: 15px;
+      }
+      .list-box i {
+        margin: auto 20px auto auto;
+      }
+section.bar
+  img.logo(src='/img/menu.png', alt='logo')
+  img.REBO(src='/img/REBO.png', alt='REBO')
+  .bar-user
+    .bar-user_icon
+      i.fas.fa-search
+      i.fas.fa-bell
+    .vertical_line
+    .bar-user_info
+      .bar-user_info--name
+        p=item.fullname
+        p student
+      a.bar-user_info--avatar(href="/Account" style="cursor: pointer;")
+.main
+  section.menu_bar
+    header.menu
+      nav.menu_items
+        .backgr_icon
+          a.item(href='/Overview')
+            i.fas.fa-chart-pie
+            .item-title
+              p Tổng quan
+        .backgr_icon
+          a.item(href='/Classroom')
+            i.fas.fa-users
+            .item-title
+              p Lớp học 
+        .backgr_icon
+          a.item(href='/Lesson')
+            i.fas.fa-book
+            .item-title
+              p Bài tập
+        .backgr_icon
+          a.item(href='/Tools')
+            i.fas.fa-tools
+            .item-title
+              p Công cụ
+        .backgr_icon
+          a.item(href='/Gift')
+            i.fas.fa-gift
+            .item-title
+              p Quà tặng
+        .horizontal_line
+        .backgr_icon
+          a.item(href='/Settings')
+            i.fas.fa-cog
+            .item-title
+              p Cài đặt
+        .backgr_icon
+          a.item(href='/Contact')
+            i.fas.fa-phone-square
+            .item-title
+              p Liên hệ
+        .backgr_icon
+          a.item(href='/Comment')
+            i.fas.fa-medal
+            .item-title
+              p Đánh giá
+        .backgr_icon
+          a.item(href='/Logout')
+            i.fas.fa-sign-out-alt
+            .item-title
+              p Đăng xuất
+  section.overview-main
+    .overview-card
+      .cards
+        .card Chưa giải quyết
+          p=item.c1
+        .card Quá hạn
+          p=item.c1
+        .card Đã mở
+          p=item.c1
+        .card Thứ hạng
+          p=item.c1
+    .chart
+      .container
+        form(method='post',href='/Overview')
+          canvas#myChart
+      .additional_info
+        ul
+          li
+            .box.b1
+              p Resolved
+              p=item.c1
+          li
+            .box.b2
+          li
+            .box.b3
+          li
+            .box.b4
+          li
+            .box.b5
+    .tickets-tasks
+      .tickets
+        p.tickets-title B&#x1EA3;ng x&#x1EBF;p h&#x1EA1;ng
+        .tickets-list
+          each hang in rank
+            .list-box
+              .avt
+              p=hang.email
+              i.fas.fa-ellipsis-v
+      .tasks
+  script.
+    const data = !{jsStringify(rows[1])};
+    var dataX = [];
+    var dataY = [];
+      for(var i in data) {
+        dataX.push("user " + data[i].email);
+        dataY.push(data[i].c5);
+      }
+  script
+    include js/chart.js

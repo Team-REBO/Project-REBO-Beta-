@@ -1,0 +1,76 @@
+doctype html
+head
+  meta(charset='UTF-8')
+  meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  title REBO
+  link(rel='stylesheet', href='/css/style.css')
+  link(href='https://fonts.googleapis.com/css?family=Open+Sans&display=swap', rel='stylesheet')
+  style.
+    * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    }
+    a {
+    display: block;
+    text-align: right;
+    text-decoration: none;
+    color: #999;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    }
+    section {
+    height: 100vh;
+    }
+    h4 {
+    margin-top: 10px;
+    }
+    h4:hover {
+    cursor: pointer;
+    color: #38c4c4;
+    }
+    .form_signup > .form_input{
+      width:70%;
+    }
+section.bgr(style='background-image: url(/img/bgr_form.png);')
+  .container
+    .img
+      img(src='/img/img.svg')
+    .form_login
+      img.avatar(src='/img/ava.svg')
+      h2 Welcome
+      form.form_input(action='/login/check', method='POST')
+        .input
+          input#Email.txt(name='EMAIL', type='text', placeholder='Email')
+        .input
+          input#Pass.txt(name='PASS', type='password', placeholder='Password')
+        a(href='') Forgot Password
+        input.btn(type='submit', value='Login')
+      label(for='form_input_signup')
+        h4 Bạn chưa đăng ký tài khoản ? Đăng ký ngay!
+    input#form_input_signup.form_check(type='checkbox', name='', hidden='')
+    label.bgr_overlay(for='form_input_signup')
+    .form_signup
+      label.form_signup_close(for='form_input_signup')
+        img.close(src='/img/Close.svg')
+      img.avatar(src='/img/ava.svg')
+      form.form_input(action='/login/signup', method='POST')
+        .input
+          input#Fullname.txt(name='FULLNAME', type='text', placeholder='Fullname')
+        .input
+          input#Email.txt(name='EMAIL', type='text', placeholder='Email')
+        .input
+          input#Pass.txt(name='PASS', type='password', placeholder='Password')
+        .input
+          input#Confirmpass.txt(name='CONFIRMPASS', type='password', placeholder='Confirm Password')
+        input.btn(type='submit', value='Sign up')
+// JS
+script.
+  function myFunction() {
+  var x = document.getElementById("form_signup");
+  if (x.style.display === "none") {
+  x.style.display = "block";
+  } else {
+  x.style.display = "none";
+  }
+  }
