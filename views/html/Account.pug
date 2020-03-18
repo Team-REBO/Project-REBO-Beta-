@@ -2,7 +2,8 @@ doctype html
 head
   meta(charset='UTF-8')
   meta(name='viewport', content='width=device-width, initial-scale=1.0')
-  title Document
+  title REBO
+  link(href='https://fonts.googleapis.com/css?family=Open+Sans&display=swap', rel='stylesheet')
   link(rel='stylesheet', href='/css/style.css')
   script(src='/img/icon/fontawesome.min.js')
   style.
@@ -193,13 +194,13 @@ section.bar
     .vertical_line
     .bar-user_info
       .bar-user_info--name
-        p Tr&#x1EA7;n Anh Qu&acirc;n
+        p=item.fullname
         p student
       .bar-user_info--avatar
 section.account
   .avatar
   div
-    p(style='font-size: 1.5em;font-weight: bolder;') Tr&#x1EA7;n Anh Qu&acirc;n
+    p(style='font-size: 1.5em;font-weight: bolder;')=item.fullname
     p(style='color: gray;') Student
     .center
       p VKU
@@ -226,8 +227,7 @@ section.selected-edit-account
     .ava
     div(style='margin-top: 7px;')
       .line1
-        h1(style='color: rgb(0, 132, 255);margin: 0 10px;')
-          | Tr&#x1EA7;n Anh Qu&acirc;n
+        h1(style='color: rgb(0, 132, 255);margin: 0 10px;')=item.fullname
         h1 / Account Setting
       .line2
         p(style='color: #878787;text-align: start;margin: 0 10px;')
@@ -237,10 +237,10 @@ section.selected-edit-account
       form(action='', style='margin-left: 20px;')
         .input
           label(for='Fullname') Fullname
-          input#Fullname.txt(name='FULLNAME', type='text', value='Trần Anh Quân')
+          input#Fullname.txt(name='FULLNAME', type='text', value=item.fullname)
         .input
           label(for='Email') Email
-          input#Email.txt(name='EMAIL', type='text', value='1')
+          input#Email.txt(name='EMAIL', type='text', value=item.email)
           .horizontal_line
         div(style='display: flex;')
           div

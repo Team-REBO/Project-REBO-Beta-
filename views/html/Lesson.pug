@@ -3,6 +3,7 @@ head
   meta(charset='UTF-8')
   meta(name='viewport', content='width=device-width, initial-scale=1.0')
   title REBO
+  link(href='https://fonts.googleapis.com/css?family=Open+Sans&display=swap', rel='stylesheet')
   link(rel='stylesheet', href='/css/style.css')
   script(src='/img/icon/fontawesome.min.js')
   style.
@@ -37,29 +38,47 @@ section.bar
         .backgr_icon
           a.item(href='/Overview')
             i.fas.fa-chart-pie
+            .item-title
+              p Tổng quan
         .backgr_icon
           a.item(href='/Classroom')
-            i.fas.fa-users  
+            i.fas.fa-users
+            .item-title
+              p Lớp học 
         .backgr_icon
           a.item(href='/Lesson')
             i.fas.fa-book
+            .item-title
+              p Bài tập
         .backgr_icon
           a.item(href='/Tools')
             i.fas.fa-tools
+            .item-title
+              p Công cụ
         .backgr_icon
           a.item(href='/Gift')
             i.fas.fa-gift
+            .item-title
+              p Quà tặng
         .horizontal_line
         .backgr_icon
           a.item(href='/Settings')
             i.fas.fa-cog
+            .item-title
+              p Cài đặt
         .backgr_icon
           a.item(href='/Contact')
             i.fas.fa-phone-square
+            .item-title
+              p Liên hệ
         .backgr_icon
           a.item(href='/Comment')
             i.fas.fa-medal
+            .item-title
+              p Đánh giá
         .backgr_icon
           a.item(href='/Logout')
             i.fas.fa-sign-out-alt
+            .item-title
+              p Đăng xuất
   section.lesson-main

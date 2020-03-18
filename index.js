@@ -108,7 +108,22 @@ app.post("/login/check", (req, res) => {
 //   // res.end();
 // });
 app.get("/Account", (req, res) => {
-  res.render("html/Account");
+  if (req.session.loggedin) {
+    con.query(
+      "SELECT * FROM users WHERE email='" + req.session.EMAIL + "'",
+      (err, rows, fields) => {
+        if (err) throw err;
+        var items = {
+          fullname: rows[0].fullname,
+          email: rows[0].email,
+        };
+        res.render("html/Account", {
+          item: items, //file pug : each item in items
+        });
+      }
+    );
+  }
+  // con.end();
 });
 app.get("/Overview", (req, res) => {
   if (req.session.loggedin) {
