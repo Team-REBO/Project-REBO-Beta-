@@ -251,6 +251,9 @@ i {
 i:hover {
   color: #38d39f;
 }
+.close > i {
+  color: black;
+}
 .backgr_icon:hover {
   background-color: #b0fffa;
 }
