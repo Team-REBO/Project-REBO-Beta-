@@ -97,16 +97,24 @@ app.post("/login/check", (req, res) => {
   // con.end();
 });
 
-// app.get("/", function(req, res) {
-//   if (req.session.loggedin) {
-//     // res.send("Welcome back, " + req.session.ID + "!");
-//     // res.sendFile("./REBO/html/Classroom.html", { root: __dirname });
-//     res.redirect("/Overview");
-//   } else {
-//     res.send("Please login to view this page!");
-//   }
-//   // res.end();
-// });
+app.get("/Account", (req, res) => {
+  if (req.session.loggedin) {
+    con.query(
+      "SELECT * FROM users WHERE email='" + req.session.EMAIL + "'",
+      (err, rows, fields) => {
+        if (err) throw err;
+        var items = {
+          fullname: rows[0].fullname,
+          email: rows[0].email,
+        };
+        res.render("html/Account", {
+          item: items, //file pug : each item in items
+        });
+      }
+    );
+  }
+  // con.end();
+});
 app.post("/Update_Account", (req, res) => {
   var fullname = req.body.FULLNAME;
   var email = req.body.EMAIL;
@@ -132,24 +140,38 @@ app.get("/Delete_Account", (req, res) => {
     );
   }
 });
-app.get("/Account", (req, res) => {
-  if (req.session.loggedin) {
-    con.query(
-      "SELECT * FROM users WHERE email='" + req.session.EMAIL + "'",
-      (err, rows, fields) => {
-        if (err) throw err;
-        var items = {
-          fullname: rows[0].fullname,
-          email: rows[0].email,
-        };
-        res.render("html/Account", {
-          item: items, //file pug : each item in items
-        });
-      }
-    );
+app.post("/Changes_Pass", (req, res) => {
+  var passold = req.body.OLD;
+  var passnew = req.body.NEW;
+  var newconfirm = req.body.NEWCONFIRM;
+  if (passold && passnew && newconfirm) {
+    if (passnew === newconfirm) {
+      con.query(
+        "select*from users where pass=?",
+        [passold],
+        (err, rows, fields) => {
+          if (rows.length > 0) {
+            con.query(
+              "update users set pass=?,confirmpass=?",
+              [passnew, newconfirm],
+              (err, rows, fields) => {
+                if (err) throw err;
+                res.redirect("/login");
+              }
+            );
+          } else {
+            res.send("Pass Old incorect!!!!!");
+          }
+        }
+      );
+    } else {
+      res.send("Pass Confirm incorect!!!!");
+    }
+  } else {
+    res.send("Please enter Old and New and NewConfirm");
   }
-  // con.end();
 });
+
 app.get("/Overview", (req, res) => {
   if (req.session.loggedin) {
     con.query(

@@ -264,16 +264,16 @@ section.selected-change-account
           | Đổi mật khẩu
   .selected-edit-account--form
     .form-edit
-      form(action='', style='margin-left: 20px;')
+      form(action='/Changes_Pass', style='margin-left: 20px;',method="POST")
         .input
           label(for='Pass-old') Mật Khẩu đang dùng
-          input#Pass-old.txt(name='Pass-old', type='password', placeholder="Mật khẩu đang dùng")
+          input#Pass-old.txt(name='OLD', type='password', placeholder="Mật khẩu đang dùng")
         .input
           label(for='Pass-new') Mật khẩu mới
-          input#Pass-new.txt(name='Pass-new', type='password', placeholder="Mật khẩu mới")
+          input#Pass-new.txt(name='NEW', type='password', placeholder="Mật khẩu mới")
         .input
           label(for='Pass-new-confirm') Nhập lại mật khẩu
-          input#Pass-new-confirm.txt(name='Pass-new-confirm', type='password', placeholder="Nhập lại mật khẩu")
+          input#Pass-new-confirm.txt(name='NEWCONFIRM', type='password', placeholder="Nhập lại mật khẩu")
           .horizontal_line
         div(style='display: flex;')
         input.btn.save(type='submit', value='Save Changes')
