@@ -173,12 +173,6 @@ head
     width: 20%;
     position: absolute;
     right: 10px;
-    background-image: linear-gradient(
-    to right,
-    #d31027 0%,
-    #ea384d 51%,
-    #d31027 100%
-    );
     }
     .save {
     margin-top: 30px;
@@ -186,7 +180,8 @@ head
     }
 section.bar
   img.logo(src='/img/menu.png', alt='logo')
-  img.REBO(src='/img/REBO.png', alt='REBO')
+  a.REBO(href="/Overview")
+    img(src='/img/REBO.png', alt='REBO')
   .bar-user
     .bar-user_icon
       i.fas.fa-search
@@ -234,7 +229,7 @@ section.selected-edit-account
           | C&#x1EAD;p nh&#x1EAD;p v&agrave; qu&#x1EA3;n l&iacute; th&ocirc;ng tin c&aacute; nh&acirc;n
   .selected-edit-account--form
     .form-edit
-      form(action='', style='margin-left: 20px;')
+      form(action='Update_Account', style='margin-left: 20px;', method="POST")
         .input
           label(for='Fullname') Fullname
           input#Fullname.txt(name='FULLNAME', type='text', value=item.fullname)
@@ -247,8 +242,10 @@ section.selected-edit-account
             h1 Xo&aacute; t&agrave;i kho&#x1EA3;n
             p(style='font-weight: bold;text-align: start;')
               | Xo&aacute; t&agrave;i kho&#x1EA3;n c&#x1EE7;a b&#x1EA1;n v&agrave; d&#x1EEF; li&#x1EC7;u t&agrave;i kho&#x1EA3;n
-          input.btn.delete(type='submit', value='Xoá')
+          label.btn(for="delete" style="text-align: center;line-height:50px") Xoá
         input.btn.save(type='submit', value='Save Changes')
+      form(action="/Delete_Account")
+        input#delete(type='submit', value='Xoá' hidden="")
 input#change.check-change(type='checkbox', name='', hidden='')
 label.bgr_overlay1(for='change')
 section.selected-change-account

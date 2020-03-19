@@ -107,6 +107,31 @@ app.post("/login/check", (req, res) => {
 //   }
 //   // res.end();
 // });
+app.post("/Update_Account", (req, res) => {
+  var fullname = req.body.FULLNAME;
+  var email = req.body.EMAIL;
+  con.query(
+    "Update users set email='" + email + "',fullname='" + fullname + "'",
+    err => {
+      if (err) throw err;
+      req.session.loggedin = true;
+      req.session.EMAIL = email;
+      req.session.FULLNAME = fullname;
+      res.redirect("/Account");
+    }
+  );
+});
+app.get("/Delete_Account", (req, res) => {
+  if (req.session.loggedin) {
+    con.query(
+      "Delete from users where email='" + req.session.EMAIL + "'",
+      (err, rows, fields) => {
+        if (err) throw err;
+        res.render("html/login_signup");
+      }
+    );
+  }
+});
 app.get("/Account", (req, res) => {
   if (req.session.loggedin) {
     con.query(
@@ -217,6 +242,11 @@ app.get("/Gift", (req, res) => {
     );
   }
   // con.end();
+});
+
+app.get("/Logout", function(req, res) {
+  req.session.loggedin = false;
+  res.redirect("/login");
 });
 
 app.listen(port, function() {

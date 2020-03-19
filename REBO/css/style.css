@@ -246,19 +246,18 @@ i {
   width: 50px;
   height: 50px;
   margin: 5px auto;
-  border-radius: 100%;
-}
-i:hover {
-  color: #38d39f;
 }
 .close > i {
   color: black;
 }
-.backgr_icon:hover {
+nav i:hover {
+  margin-top: -10px;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  color: #38d39f;
   background-color: #b0fffa;
-}
-.backgr_icon:checked + .item::ater {
-  color: #00042b;
+  border-radius: 100%;
 }
 .item-title {
   width: auto;
