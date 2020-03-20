@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const port = 3000;
 // const con = mysql.createConnection({ multipleStatements: true });
 const jsStringify = require("js-stringify");
+const Swal = require("sweetalert2");
 
 //server static files
 app.use(express.static(path.join("REBO")));
@@ -42,6 +43,7 @@ con.connect(function(err) {
   if (err) throw err;
   console.log("Connected!");
 });
+
 app.get("/", (req, res) => {
   res.render("html/Homepage");
 });
@@ -159,16 +161,10 @@ app.post("/Changes_Pass", (req, res) => {
                 res.redirect("/login");
               }
             );
-          } else {
-            res.send("Pass Old incorect!!!!!");
           }
         }
       );
-    } else {
-      res.send("Pass Confirm incorect!!!!");
     }
-  } else {
-    res.send("Please enter Old and New and NewConfirm");
   }
 });
 

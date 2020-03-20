@@ -5,7 +5,8 @@ head
   title REBO
   link(href='https://fonts.googleapis.com/css?family=Open+Sans&display=swap', rel='stylesheet')
   link(rel='stylesheet', href='/css/style.css')
-  script(src='/img/icon/fontawesome.min.js')
+  script(src='/img/icon/fontawesome.min.js') 
+  link(rel='stylesheet', href='/Alert/sweetalert2.min.css')
   style.
     body {
     background-color: rgb(241, 241, 241);
@@ -264,7 +265,7 @@ section.selected-change-account
           | Đổi mật khẩu
   .selected-edit-account--form
     .form-edit
-      form(action='/Changes_Pass', style='margin-left: 20px;',method="POST")
+      form(id="IDD",action='/Changes_Pass', style='margin-left: 20px;',method="POST")
         .input
           label(for='Pass-old') Mật Khẩu đang dùng
           input#Pass-old.txt(name='OLD', type='password', placeholder="Mật khẩu đang dùng")
@@ -276,4 +277,57 @@ section.selected-change-account
           input#Pass-new-confirm.txt(name='NEWCONFIRM', type='password', placeholder="Nhập lại mật khẩu")
           .horizontal_line
         div(style='display: flex;')
-        input.btn.save(type='submit', value='Save Changes')
+        input.btn.save(type='submit', value='Save Changes' onClick="sweet();")
+        script(src="/Alert/sweetalert2.min.js")
+        script(type="text/javascript").
+          //- function sweet(){
+          //- var passold = document.getElementById('Pass-old').value;
+          //- var passnew = document.getElementById('Pass-new').value;
+          //- var newconfirm = document.getElementById('Pass-new-confirm').value;
+          //- if(passold && passnew && newconfirm){
+          //-   document.getElementById("IDD").addEventListener("submit", function(event){
+          //-       event.stopImmediatePropagation();
+          //-     });
+          //- }
+          //- else{
+          //-     Swal.fire({
+          //-       icon: 'error',
+          //-       title: 'Oops...',
+          //-       text: 'Error!!!',
+          //-       footer: ['<a href>Why do I have this issue?</a>'],
+          //-     })
+          //-   }
+          //-   event.preventDefault();
+          //- }
+          document.getElementById("IDD").addEventListener("submit", function sweet(event){
+                var passold = document.getElementById('Pass-old').value;
+                var passnew = document.getElementById('Pass-new').value;
+                var newconfirm = document.getElementById('Pass-new-confirm').value;
+                if(passold && passnew && newconfirm){
+                  if(passnew===newconfirm){}
+                  else{
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      showConfirmButton:false,
+                      text: 'Newconfirm Incorect',
+                      footer: '<a href>Why do I have this issue?</a>',
+                    }),
+                    setTimeout(function() {
+                    location.reload();
+                  }, 2000);
+                  }
+                }
+                else{
+                    Swal.fire({
+                      icon: 'error',
+                      title: 'Oops...',
+                      showConfirmButton:false,
+                      text: 'Please enter Pass',
+                      footer: '<a href>Why do I have this issue?</a>',
+                    }),
+                    setTimeout(function() {
+                    location.reload();
+                  }, 2000);
+                  }
+              });
