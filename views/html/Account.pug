@@ -265,7 +265,7 @@ section.selected-change-account
           | Đổi mật khẩu
   .selected-edit-account--form
     .form-edit
-      form(id="IDD",action='/Changes_Pass', style='margin-left: 20px;',method="POST")
+      form(id="CHANGE",action='/Changes_Pass', style='margin-left: 20px;',method="POST")
         .input
           label(for='Pass-old') Mật Khẩu đang dùng
           input#Pass-old.txt(name='OLD', type='password', placeholder="Mật khẩu đang dùng")
@@ -277,7 +277,7 @@ section.selected-change-account
           input#Pass-new-confirm.txt(name='NEWCONFIRM', type='password', placeholder="Nhập lại mật khẩu")
           .horizontal_line
         div(style='display: flex;')
-        input.btn.save(type='submit', value='Save Changes' onClick="sweet();")
+        input.btn.save(type='submit', value='Save Changes')
         script(src="/Alert/sweetalert2.min.js")
         script(type="text/javascript").
           //- function sweet(){
@@ -299,7 +299,7 @@ section.selected-change-account
           //-   }
           //-   event.preventDefault();
           //- }
-          document.getElementById("IDD").addEventListener("submit", function sweet(event){
+          document.getElementById("CHANGE").addEventListener("submit", function sweet(event){
                 var passold = document.getElementById('Pass-old').value;
                 var passnew = document.getElementById('Pass-new').value;
                 var newconfirm = document.getElementById('Pass-new-confirm').value;

@@ -53,23 +53,21 @@ app.get("/login", (req, res) => {
 });
 
 app.post("/login/signup", (req, res) => {
-  var sql =
-    "insert into users value('" +
-    req.body.FULLNAME +
-    "','" +
-    req.body.EMAIL +
-    "','" +
-    req.body.PASS +
-    "','" +
-    req.body.CONFIRMPASS +
-    "')";
-  con.query(sql, function(err) {
-    if (err) throw err;
-    res.render("user/completed", {
-      title: "Data",
-      mess: "DataSavedSuccessfull",
-    });
-  });
+  var fullname = req.body.FULLNAME;
+  var email = req.body.EMAIL;
+  var pass = req.body.PASS;
+  var confirmpass = req.body.CONFIRMPASS;
+  con.query(
+    "insert into users value(?,?,?,?)",
+    [fullname, email, pass, confirmpass],
+    function(err) {
+      if (err) throw err;
+      res.render("user/completed", {
+        title: "Data",
+        mess: "DataSavedSuccessfull",
+      });
+    }
+  );
   // con.end();
 });
 
@@ -100,28 +98,28 @@ app.post("/login/check", (req, res) => {
 });
 
 app.get("/Account", (req, res) => {
-  if (req.session.loggedin) {
-    con.query(
-      "SELECT * FROM users WHERE email='" + req.session.EMAIL + "'",
-      (err, rows, fields) => {
-        if (err) throw err;
-        var items = {
-          fullname: rows[0].fullname,
-          email: rows[0].email,
-        };
-        res.render("html/Account", {
-          item: items, //file pug : each item in items
-        });
-      }
-    );
-  }
+  con.query(
+    "SELECT * FROM users WHERE email=?",
+    [req.session.EMAIL],
+    (err, rows, fields) => {
+      if (err) throw err;
+      var items = {
+        fullname: rows[0].fullname,
+        email: rows[0].email,
+      };
+      res.render("html/Account", {
+        item: items, //file pug : each item in items
+      });
+    }
+  );
   // con.end();
 });
 app.post("/Update_Account", (req, res) => {
   var fullname = req.body.FULLNAME;
   var email = req.body.EMAIL;
   con.query(
-    "Update users set email='" + email + "',fullname='" + fullname + "'",
+    "Update users set email=?,fullname=? where email=?",
+    [email, fullname, req.session.EMAIL],
     err => {
       if (err) throw err;
       req.session.loggedin = true;
@@ -132,15 +130,14 @@ app.post("/Update_Account", (req, res) => {
   );
 });
 app.get("/Delete_Account", (req, res) => {
-  if (req.session.loggedin) {
-    con.query(
-      "Delete from users where email='" + req.session.EMAIL + "'",
-      (err, rows, fields) => {
-        if (err) throw err;
-        res.render("html/login_signup");
-      }
-    );
-  }
+  con.query(
+    "Delete from users where email=?",
+    [req.session.EMAIL],
+    (err, rows, fields) => {
+      if (err) throw err;
+      res.render("html/login_signup");
+    }
+  );
 });
 app.post("/Changes_Pass", (req, res) => {
   var passold = req.body.OLD;
@@ -154,8 +151,8 @@ app.post("/Changes_Pass", (req, res) => {
         (err, rows, fields) => {
           if (rows.length > 0) {
             con.query(
-              "update users set pass=?,confirmpass=?",
-              [passnew, newconfirm],
+              "update users set pass=?,confirmpass=? where email=?",
+              [passnew, newconfirm, req.session.EMAIL],
               (err, rows, fields) => {
                 if (err) throw err;
                 res.redirect("/login");
@@ -169,96 +166,90 @@ app.post("/Changes_Pass", (req, res) => {
 });
 
 app.get("/Overview", (req, res) => {
-  if (req.session.loggedin) {
-    con.query(
-      "select*from users inner join test on test.email=users.email where users.email='" +
-        req.session.EMAIL +
-        "';select*from test;select*from test order by c3 desc limit 5",
-      (err, rows, fields) => {
-        if (err) throw err;
-        var items = {
-          fullname: rows[0][0].fullname,
-          c1: rows[0][0].c1,
-        };
-        var ranks = rows[2];
-        res.render("html/Overview", {
-          item: items,
-          rank: ranks,
-          jsStringify,
-          rows,
-        });
-      }
-    );
-  }
+  con.query(
+    "select*from users inner join test on test.email=users.email where users.email='" +
+      req.session.EMAIL +
+      "';select*from test;select*from test order by c3 desc limit 5",
+    (err, rows, fields) => {
+      if (err) throw err;
+      var items = {
+        fullname: rows[0][0].fullname,
+        c1: rows[0][0].c1,
+      };
+      var ranks = rows[2];
+      res.render("html/Overview", {
+        item: items,
+        rank: ranks,
+        jsStringify,
+        rows,
+      });
+    }
+  );
   // con.end();
 });
 
 app.get("/Classroom", (req, res) => {
-  if (req.session.loggedin) {
-    con.query(
-      "SELECT * FROM users WHERE email='" + req.session.EMAIL + "'",
-      (err, rows, fields) => {
-        if (err) throw err;
-        var items = {
-          fullname: rows[0].fullname,
-        };
-        res.render("html/Classroom", {
-          item: items, //file pug : each item in items
-        });
-      }
-    );
-  }
+  con.query(
+    "SELECT * FROM users WHERE email=?",
+    [req.session.EMAIL],
+    (err, rows, fields) => {
+      if (err) throw err;
+      var items = {
+        fullname: rows[0].fullname,
+      };
+      res.render("html/Classroom", {
+        item: items, //file pug : each item in items
+      });
+    }
+  );
   // con.end();
 });
 app.get("/Lesson", (req, res) => {
-  if (req.session.loggedin) {
-    con.query(
-      "SELECT * FROM users WHERE email='" + req.session.EMAIL + "'",
-      (err, rows, fields) => {
-        if (err) throw err;
-        var items = {
-          fullname: rows[0].fullname,
-        };
-        res.render("html/Lesson", {
-          item: items, //file pug : each item in items
-        });
-      }
-    );
-  }
+  con.query(
+    "SELECT * FROM users WHERE email=?",
+    [req.session.EMAIL],
+    (err, rows, fields) => {
+      if (err) throw err;
+      var items = {
+        fullname: rows[0].fullname,
+      };
+      res.render("html/Lesson", {
+        item: items, //file pug : each item in items
+      });
+    }
+  );
   // con.end();
 });
 app.get("/Tools", (req, res) => {
-  if (req.session.loggedin) {
-    con.query(
-      "SELECT * FROM users WHERE email='" + req.session.EMAIL + "'",
-      (err, rows, fields) => {
-        if (err) throw err;
-        var items = {
-          fullname: rows[0].fullname,
-        };
-        res.render("html/Tools", {
-          item: items, //file pug : each item in items
-        });
-      }
-    );
-  }
+  con.query(
+    "SELECT * FROM users WHERE email=?",
+    [req.session.EMAIL],
+    (err, rows, fields) => {
+      if (err) throw err;
+      var items = {
+        fullname: rows[0].fullname,
+      };
+      res.render("html/Tools", {
+        item: items, //file pug : each item in items
+      });
+    }
+  );
   // con.end();
 });
 app.get("/Gift", (req, res) => {
-  if (req.session.loggedin) {
-    con.query(
-      "SELECT * FROM users WHERE email='" + req.session.EMAIL + "'",
-      (err, rows, fields) => {
-        if (err) throw err;
-        var items = {
-          fullname: rows[0].fullname,
-        };
-        res.render("html/Gift", {
-          item: items, //file pug : each item in items
-        });
-      }
-    );
-  }
+  con.query(
+    "SELECT * FROM users WHERE email=?",
+    [req.session.EMAIL],
+    (err, rows, fields) => {
+      if (err) throw err;
+      var items = {
+        fullname: rows[0].fullname,
+      };
+      res.render("html/Gift", {
+        item: items, //file pug : each item in items
+      });
+    }
+  );
   // con.end();
 });
 
