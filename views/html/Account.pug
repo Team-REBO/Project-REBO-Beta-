@@ -308,26 +308,24 @@ section.selected-change-account
                   else{
                     Swal.fire({
                       icon: 'error',
-                      title: 'Oops...',
-                      showConfirmButton:false,
-                      text: 'Newconfirm Incorect',
-                      footer: '<a href>Why do I have this issue?</a>',
+                      title: 'Newconfirm incorect',
+                      showConfirmButton: false,
+                      timer: 1500
                     }),
                     setTimeout(function() {
                     location.reload();
-                  }, 2000);
+                  }, 1500);
                   }
                 }
                 else{
                     Swal.fire({
                       icon: 'error',
-                      title: 'Oops...',
-                      showConfirmButton:false,
-                      text: 'Please enter Pass',
-                      footer: '<a href>Why do I have this issue?</a>',
+                      title: 'Please enter Pass',
+                      showConfirmButton: false,
+                      timer: 1500
                     }),
                     setTimeout(function() {
                     location.reload();
-                  }, 2000);
+                  }, 1500);
                   }
               });

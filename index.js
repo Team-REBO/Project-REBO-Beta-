@@ -90,9 +90,6 @@ app.post("/login/check", (req, res) => {
         res.end();
       }
     );
-  } else {
-    res.send("Please enter EMAIL and PASS");
-    res.end();
   }
   // con.end();
 });
