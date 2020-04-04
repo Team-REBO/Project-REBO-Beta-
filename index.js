@@ -39,7 +39,7 @@ var con = mysql.createConnection({
   database: "mydb",
   multipleStatements: true,
 });
-con.connect(function(err) {
+con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
 });
@@ -60,7 +60,7 @@ app.post("/login/signup", (req, res) => {
   con.query(
     "insert into users value(?,?,?,?)",
     [fullname, email, pass, confirmpass],
-    function(err) {
+    function (err) {
       if (err) throw err;
       res.render("user/completed", {
         title: "Data",
@@ -78,7 +78,7 @@ app.post("/login/check", (req, res) => {
     con.query(
       "SELECT * FROM users WHERE email = ? and pass=?",
       [email, pass],
-      function(err, rows, fields) {
+      function (err, rows, fields) {
         if (rows.length > 0) {
           req.session.loggedin = true;
           req.session.EMAIL = email;
@@ -112,16 +112,17 @@ app.get("/Account", (req, res) => {
   // con.end();
 });
 app.post("/Update_Account", (req, res) => {
-  var fullname = req.body.FULLNAME;
-  var email = req.body.EMAIL;
+  var fullname = req.body.fullname;
+  var email = req.body.email;
   con.query(
     "Update users set email=?,fullname=? where email=?",
     [email, fullname, req.session.EMAIL],
-    err => {
+    (err) => {
       if (err) throw err;
       req.session.loggedin = true;
       req.session.EMAIL = email;
       req.session.FULLNAME = fullname;
+      console.log(email);
       res.redirect("/Account");
     }
   );
@@ -137,9 +138,9 @@ app.get("/Delete_Account", (req, res) => {
   );
 });
 app.post("/Changes_Pass", (req, res) => {
-  var passold = req.body.OLD;
-  var passnew = req.body.NEW;
-  var newconfirm = req.body.NEWCONFIRM;
+  var passold = req.body.old;
+  var passnew = req.body.new;
+  var newconfirm = req.body.newconfirm;
   if (passold && passnew && newconfirm) {
     if (passnew === newconfirm) {
       con.query(
@@ -250,11 +251,11 @@ app.get("/Gift", (req, res) => {
   // con.end();
 });
 
-app.get("/Logout", function(req, res) {
+app.get("/Logout", function (req, res) {
   req.session.loggedin = false;
   res.redirect("/login");
 });
 
-app.listen(port, function() {
+app.listen(port, function () {
   console.log("Server started port !..." + port);
 });

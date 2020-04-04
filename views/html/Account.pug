@@ -7,6 +7,7 @@ head
   link(rel='stylesheet', href='/css/style.css')
   script(src='/img/icon/fontawesome.min.js') 
   link(rel='stylesheet', href='/Alert/sweetalert2.min.css')
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
   style.
     body {
     background-color: rgb(241, 241, 241);
@@ -230,22 +231,22 @@ section.selected-edit-account
           | C&#x1EAD;p nh&#x1EAD;p v&agrave; qu&#x1EA3;n l&iacute; th&ocirc;ng tin c&aacute; nh&acirc;n
   .selected-edit-account--form
     .form-edit
-      form(action='Update_Account', style='margin-left: 20px;', method="POST")
+      form#UPDATE( style='margin-left: 20px;')
         .input
-          label(for='Fullname') Fullname
-          input#Fullname.txt(name='FULLNAME', type='text', value=item.fullname)
+          label(for='FULLNAME') Fullname
+          input#FULLNAME.txt(name='FULLNAME', type='text', value=item.fullname)
         .input
-          label(for='Email') Email
-          input#Email.txt(name='EMAIL', type='text', value=item.email)
+          label(for='EMAIL') Email
+          input#EMAIL.txt(name='EMAIL', type='text', value=item.email)
           .horizontal_line
         div(style='display: flex;')
           div
             h1 Xo&aacute; t&agrave;i kho&#x1EA3;n
             p(style='font-weight: bold;text-align: start;')
               | Xo&aacute; t&agrave;i kho&#x1EA3;n c&#x1EE7;a b&#x1EA1;n v&agrave; d&#x1EEF; li&#x1EC7;u t&agrave;i kho&#x1EA3;n
-          label.btn(for="delete" style="text-align: center;line-height:50px") Xoá
+          label.btn(for='delete' style="text-align: center;line-height:50px") Xoá
         input.btn.save(type='submit', value='Save Changes')
-      form(action="/Delete_Account")
+      form#DELETE
         input#delete(type='submit', value='Xoá' hidden="")
 input#change.check-change(type='checkbox', name='', hidden='')
 label.bgr_overlay1(for='change')
@@ -265,67 +266,19 @@ section.selected-change-account
           | Đổi mật khẩu
   .selected-edit-account--form
     .form-edit
-      form(id="CHANGE",action='/Changes_Pass', style='margin-left: 20px;',method="POST")
+      form#CHANGE(style='margin-left: 20px;')
         .input
           label(for='Pass-old') Mật Khẩu đang dùng
-          input#Pass-old.txt(name='OLD', type='password', placeholder="Mật khẩu đang dùng")
+          input#Pass-old.txt( type='password', placeholder="Mật khẩu đang dùng")
         .input
           label(for='Pass-new') Mật khẩu mới
-          input#Pass-new.txt(name='NEW', type='password', placeholder="Mật khẩu mới")
+          input#Pass-new.txt(type='password', placeholder="Mật khẩu mới")
         .input
           label(for='Pass-new-confirm') Nhập lại mật khẩu
-          input#Pass-new-confirm.txt(name='NEWCONFIRM', type='password', placeholder="Nhập lại mật khẩu")
+          input#Pass-new-confirm.txt( type='password', placeholder="Nhập lại mật khẩu")
           .horizontal_line
         div(style='display: flex;')
         input.btn.save(type='submit', value='Save Changes')
         script(src="/Alert/sweetalert2.min.js")
-        script(type="text/javascript").
-          //- function sweet(){
-          //- var passold = document.getElementById('Pass-old').value;
-          //- var passnew = document.getElementById('Pass-new').value;
-          //- var newconfirm = document.getElementById('Pass-new-confirm').value;
-          //- if(passold && passnew && newconfirm){
-          //-   document.getElementById("IDD").addEventListener("submit", function(event){
-          //-       event.stopImmediatePropagation();
-          //-     });
-          //- }
-          //- else{
-          //-     Swal.fire({
-          //-       icon: 'error',
-          //-       title: 'Oops...',
-          //-       text: 'Error!!!',
-          //-       footer: ['<a href>Why do I have this issue?</a>'],
-          //-     })
-          //-   }
-          //-   event.preventDefault();
-          //- }
-          document.getElementById("CHANGE").addEventListener("submit", function sweet(event){
-                var passold = document.getElementById('Pass-old').value;
-                var passnew = document.getElementById('Pass-new').value;
-                var newconfirm = document.getElementById('Pass-new-confirm').value;
-                if(passold && passnew && newconfirm){
-                  if(passnew===newconfirm){}
-                  else{
-                    Swal.fire({
-                      icon: 'error',
-                      title: 'Newconfirm incorect',
-                      showConfirmButton: false,
-                      timer: 1500
-                    }),
-                    setTimeout(function() {
-                    location.reload();
-                  }, 1500);
-                  }
-                }
-                else{
-                    Swal.fire({
-                      icon: 'error',
-                      title: 'Please enter Pass',
-                      showConfirmButton: false,
-                      timer: 1500
-                    }),
-                    setTimeout(function() {
-                    location.reload();
-                  }, 1500);
-                  }
-              });
+        script
+          include js/ajax.js
