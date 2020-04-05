@@ -38,6 +38,7 @@ var con = mysql.createConnection({
   port: "3306",
   database: "mydb",
   multipleStatements: true,
+  port: "3306",
 });
 con.connect(function (err) {
   if (err) throw err;
