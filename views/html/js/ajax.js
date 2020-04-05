@@ -65,7 +65,12 @@ var deleted = function deleted() {
     url: "Delete_Account/",
     type: "GET",
   }).done(function () {
-    Swal.fire("Deleted!", "Your file has been deleted.", "success");
+    Swal.fire({
+      icon: "success",
+      title: "Deleted!",
+      text: "Your file has been deleted.",
+      preConfirm: toLogin,
+    });
   });
 };
 var change = function change() {
@@ -84,7 +89,7 @@ var change = function change() {
       Swal.fire({
         icon: "success",
         title: "OK",
-        preConfirm: test,
+        preConfirm: toLogin,
       });
     })
     .fail(function () {
@@ -94,9 +99,44 @@ var change = function change() {
       });
     });
 };
+
+//LOGIN AND SINGUP
+$("#LOGIN").on("submit", function (e) {
+  e.preventDefault();
+  $.ajax({
+    url: "login/check/",
+    type: "POST",
+    dataType: "html",
+    cache: false,
+    data: {
+      email: $("#Email").val(),
+      pass: $("#Pass").val(),
+    },
+  })
+    .done(function () {
+      Swal.fire({
+        icon: "success",
+        title: "OK",
+        preConfirm: toOverview,
+      });
+    })
+    .fail(function (data) {
+      if ((data = 404)) {
+        Swal.fire({
+          icon: "error",
+          title: "Password incorect!!!",
+        });
+      }
+      console.log(data);
+    });
+});
+
 var load = function load() {
   setInterval("location.reload()", 100);
 };
-var test = function test() {
+var toLogin = function toLogin() {
   window.location = "http://localhost:3000/login?";
+};
+var toOverview = function toOverview() {
+  window.location = "http://localhost:3000/Overview";
 };

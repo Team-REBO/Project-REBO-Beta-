@@ -6,6 +6,7 @@ head
   link(rel='stylesheet', href='/css/style.css')
   link(href='https://fonts.googleapis.com/css?family=Open+Sans&display=swap', rel='stylesheet')
   link(rel='stylesheet', href='/Alert/sweetalert2.min.css')
+  script(src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js")
   style.
     * {
     padding: 0;
@@ -40,7 +41,7 @@ section.bgr(style='background-image: url(/img/bgr_form.png);')
     .form_login
       img.avatar(src='/img/ava.svg')
       h2 Welcome
-      form#LOGIN.form_input(action='/login/check', method='POST')
+      form#LOGIN.form_input
         .input
           input#Email.txt(name='EMAIL', type='text', placeholder='Email')
         .input
@@ -66,22 +67,6 @@ section.bgr(style='background-image: url(/img/bgr_form.png);')
           input#Confirmpass.txt(name='CONFIRMPASS', type='password', placeholder='Confirm Password')
         input.btn(type='submit', value='Sign up')
 
-
 script(src="/Alert/sweetalert2.min.js")
-script.
-  document.getElementById("LOGIN").addEventListener("submit",function sweet(){
-    var email=document.getElementById('Email').value;
-    var pass=document.getElementById('Pass').value;
-    if(email&&pass){}
-    else {
-      Swal.fire({
-        icon: 'error',
-        title: 'Please enter Email or Pass!!!',
-        showConfirmButton: false,
-        timer: 1500
-      }),
-      setTimeout(function() {
-      location.reload();
-    }, 1500);
-    }
-  })
+script
+  include js/ajax.js

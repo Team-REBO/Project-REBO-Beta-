@@ -72,22 +72,22 @@ app.post("/login/signup", (req, res) => {
 });
 
 app.post("/login/check", (req, res) => {
-  var email = req.body.EMAIL;
-  var pass = req.body.PASS;
+  var email = req.body.email;
+  var pass = req.body.pass;
   if (email && pass) {
     con.query(
       "SELECT * FROM users WHERE email = ? and pass=?",
       [email, pass],
-      function (err, rows, fields) {
+      (err, rows, fields) => {
         if (rows.length > 0) {
           req.session.loggedin = true;
           req.session.EMAIL = email;
           req.session.PASS = pass;
           res.redirect("/Overview");
         } else {
-          res.send("Incorrect PASS or EMAIL");
+          res.status(404);
         }
-        // res.end();
+        res.end();
       }
     );
   }
