@@ -87,7 +87,7 @@ app.post("/login/check", (req, res) => {
         } else {
           res.send("Incorrect PASS or EMAIL");
         }
-        res.end();
+        // res.end();
       }
     );
   }
