@@ -7,7 +7,7 @@ const session = require("express-session");
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
 
-const port = process.env.PORT;
+const port = process.env.PORT || 8000;
 // const con = mysql.createConnection({ multipleStatements: true });
 const jsStringify = require("js-stringify");
 const Swal = require("sweetalert2");
@@ -64,15 +64,22 @@ app.use(
 //   // password: "6a94a90c",
 //   // port: "3306",
 //   // database: "heroku_7792f0fc80b8b3d",
-//   host: "us-cdbr-iron-east-01.cleardb.net",
-//   user: "b22388f4cd38f5",
-//   password: "6a94a90c",
-//   database: "heroku_7792f0fc80b8b3d",
-//   multipleStatements: true,
+// host: "us-cdbr-iron-east-01.cleardb.net",
+// user: "b22388f4cd38f5",
+// password: "6a94a90c",
+// database: "heroku_7792f0fc80b8b3d",
+// multipleStatements: true,
 // });
 var myconfig = {
   CLEARDB_DATABASE_URL:
-    "mysql://b22388f4cd38f5:6a94a90c@us-cdbr-iron-east-01.cleardb.net/heroku_7792f0fc80b8b3d?reconnect=true",
+    // "mysql://b22388f4cd38f5:6a94a90c@us-cdbr-iron-east-01.cleardb.net/heroku_7792f0fc80b8b3d?reconnect=true",
+    {
+      host: "us-cdbr-iron-east-01.cleardb.net",
+      user: "b22388f4cd38f5",
+      password: "6a94a90c",
+      database: "heroku_7792f0fc80b8b3d",
+      multipleStatements: true,
+    },
 };
 var con = mysql.createPool(myconfig.CLEARDB_DATABASE_URL);
 module.exports = con;
