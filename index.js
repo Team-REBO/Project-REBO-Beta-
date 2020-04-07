@@ -7,8 +7,6 @@ const session = require("express-session");
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
 
-app.connect(process.env.CLEARDB_DATABASE_URL);
-
 const port = process.env.PORT || 3000;
 // const con = mysql.createConnection({ multipleStatements: true });
 const jsStringify = require("js-stringify");
