@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 const jsStringify = require("js-stringify");
 const Swal = require("sweetalert2");
 
-const dbConfig = require("/js/db.config.js");
+// const dbConfig = require("../mysql/config/db.config.js");
 
 //server static files
 app.use(express.static(path.join("REBO")));
@@ -42,13 +42,13 @@ var con = mysql.createConnection({
   // password: "6a94a90c",
   // port: "3306",
   // database: "heroku_7792f0fc80b8b3d",
-  host: dbConfig.HOST,
-  user: dbConfig.USER,
-  password: dbConfig.PASSWORD,
-  database: dbConfig.DB,
+  host: "us-cdbr-iron-east-01.cleardb.net",
+  user: "b22388f4cd38f5",
+  password: "6a94a90c",
+  database: "heroku_7792f0fc80b8b3d",
   multipleStatements: true,
 });
-module.exports = connection;
+module.exports = con;
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
