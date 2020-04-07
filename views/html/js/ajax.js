@@ -135,8 +135,9 @@ var load = function load() {
   setInterval("location.reload()", 100);
 };
 var toLogin = function toLogin() {
-  window.location = "http://localhost:3000/login?";
+  window.location = "http://rebo-demo.herokuapp.com/login?";
 };
 var toOverview = function toOverview() {
-  window.location = "http://localhost:3000/Overview";
+  // window.location = "http://localhost:3000/Overview"; only run in local
+  window.location = "http://rebo-demo.herokuapp.com/Overview"; // run only heroku
 };

@@ -34,6 +34,28 @@ app.use(
     saveUninitialized: true,
   })
 );
+// const config = {
+//   driver: "redis",
+//   database: 0,
+//   expires: 86400,
+//   host: "127.0.0.1",
+//   port: 6379,
+//   prefix: "sessions:",
+//   secret: "secr3t",
+//   secureCookie: process.env.NODE_ENV === "production",
+// };
+// const storage = store(config);
+// app.use(
+//   sessions({
+//     cookie: { secure: config.secureCookie },
+//     store: storage,
+//     secret: config.secret,
+//     resave: false,
+//     saveUninitialized: false,
+//     cookie: { maxAge: Math.round(config.expires) },
+//   })
+// );
+
 var con = mysql.createConnection({
   // host: "us-cdbr-iron-east-01.cleardb.net",
   // // user: "root",
