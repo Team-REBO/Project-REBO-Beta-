@@ -12,7 +12,7 @@ const port = process.env.PORT || 3000;
 const jsStringify = require("js-stringify");
 const Swal = require("sweetalert2");
 
-const dbConfig = require("../VSC.PHP/views/html/js/db.config.js");
+const dbConfig = require("/js/db.config.js");
 
 //server static files
 app.use(express.static(path.join("REBO")));
