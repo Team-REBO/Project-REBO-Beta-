@@ -7,7 +7,7 @@ const session = require("express-session");
 const mysql = require("mysql");
 const bodyParser = require("body-parser");
 
-const port = process.env.PORT || 8000;
+const port = process.env.PORT;
 // const con = mysql.createConnection({ multipleStatements: true });
 const jsStringify = require("js-stringify");
 const Swal = require("sweetalert2");
