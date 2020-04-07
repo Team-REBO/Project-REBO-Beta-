@@ -12,6 +12,8 @@ const port = process.env.PORT || 3000;
 const jsStringify = require("js-stringify");
 const Swal = require("sweetalert2");
 
+const dbConfig = require("../VSC.PHP/views/html/js/db.config.js");
+
 //server static files
 app.use(express.static(path.join("REBO")));
 // app.use(express.static("REBO"));
@@ -33,15 +35,20 @@ app.use(
   })
 );
 var con = mysql.createConnection({
-  host: "us-cdbr-iron-east-01.cleardb.net",
-  // user: "root",
-  user: "b22388f4cd38f5",
-  // password: "39339",
-  password: "6a94a90c",
-  port: "3306",
-  database: "heroku_7792f0fc80b8b3d",
+  // host: "us-cdbr-iron-east-01.cleardb.net",
+  // // user: "root",
+  // user: "b22388f4cd38f5",
+  // // password: "39339",
+  // password: "6a94a90c",
+  // port: "3306",
+  // database: "heroku_7792f0fc80b8b3d",
+  host: dbConfig.HOST,
+  user: dbConfig.USER,
+  password: dbConfig.PASSWORD,
+  database: dbConfig.DB,
   multipleStatements: true,
 });
+module.exports = connection;
 con.connect(function (err) {
   if (err) throw err;
   console.log("Connected!");
