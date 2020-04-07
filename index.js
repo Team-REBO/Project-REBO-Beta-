@@ -33,13 +33,14 @@ app.use(
   })
 );
 var con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "39339",
+  host: "us-cdbr-iron-east-01.cleardb.net",
+  // user: "root",
+  user: "b22388f4cd38f5",
+  // password: "39339",
+  password: "6a94a90c",
   port: "3306",
-  database: "mydb",
+  database: "heroku_7792f0fc80b8b3d",
   multipleStatements: true,
-  port: "3306",
 });
 con.connect(function (err) {
   if (err) throw err;
