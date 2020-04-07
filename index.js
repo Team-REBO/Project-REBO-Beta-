@@ -46,6 +46,7 @@ var con = mysql.createConnection({
   user: "b22388f4cd38f5",
   password: "6a94a90c",
   database: "heroku_7792f0fc80b8b3d",
+  port: "3306",
   multipleStatements: true,
 });
 module.exports = con;
